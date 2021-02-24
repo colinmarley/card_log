@@ -1,0 +1,33 @@
+
+
+.navbar-root {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 13vh;
+    bottom: 0vh;
+    background-color: lightgrey;
+}
+
+.navbar-tab-root {
+    display: inline-block;
+    height: 10vh;
+    width: inherit;
+}
+
+.tab-selected {
+    background-color: grey;
+}
+
+.navbar-tab-img-root {
+
+    height: 7.5vh;
+    width: 7.5vh;
+    display: block;
+    justify-content: center;
+
+}
+
+.navbar-tab-title {
+    font-size: 2vh;
+}
