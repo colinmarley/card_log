@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import NavbarTab from './views/NavbarTab'
 import { setTabActiveFlag } from '../actions/myActions'
 
+import { Link } from 'react-router-dom';
+
 
 const mapStateToProps = (state, ownProps) => {
     return({
@@ -39,10 +41,11 @@ class Navbar extends Component {
                 {(this.props.tabs) ? 
                     this.props.tabs.map(
                         (tab) => (
-                            <NavbarTab
-                                tab={tab}
-                                onClick={(tab) => this.onTabSelected(tab)}
-                            ></NavbarTab>
+                                <NavbarTab
+                                    tab={tab}
+                                    key={tab.title}
+                                    onClick={(tab) => this.onTabSelected(tab)}
+                                ></NavbarTab>
                             )
                     ) :
                     <p>Loading...</p>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 
 const mapStateToProps = (state, ownProps) => ({
 
@@ -27,11 +29,14 @@ class NavbarTab extends Component {
                 className={rootClassName}
                 id={`navbar-tab-${this.props.tab.title}`}
                 onClick={() => this.props.onClick(this.props.tab)}
+                key={this.props.key}
             >
-                <div className="navbar-tab-img-root">
+                <Link to={`/${this.props.tab.title}`}>
+                    <div className="navbar-tab-img-root">
 
-                </div>
-                <p className="navbar-tab-title">{this.props.tab.title.toUpperCase()}</p>
+                    </div>
+                    <p className="navbar-tab-title">{this.props.tab.title.toUpperCase()}</p>
+                </Link>
             </div>
         )
     }
