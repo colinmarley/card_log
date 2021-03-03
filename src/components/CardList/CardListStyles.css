@@ -1,0 +1,61 @@
+.card-list {
+    width: 80vw;
+    position: relative;
+}
+
+.card-list-item {
+    height: 30vh;
+    width: inherit;
+    position: inherit;
+    border: 2px solid black;
+    border-radius: 1vw;
+    margin: 0.5vh;
+
+}
+
+.card-list-item-name {
+    position: relative;
+    width: fit-content;
+    top: 0;
+    display: block;
+    left: 0px;
+    margin: 0.5vw;
+    font-size: 2vh;
+
+}
+
+.card-list-item-team {
+    position: relative;
+    width: fit-content;
+    top: 0;
+    display: block;
+    left: 0px;
+    margin: 0.5vw;
+    font-size: 3vh;
+    font-style: italic;
+}
+
+.card-list-item-details {
+    position: relative;
+    width: fit-content;
+    top: 0;
+    display: block;
+    left: 0px;
+    margin: 0.5vw;
+    font-size: 5vh;
+    font-weight: bold;
+}
+
+.card-list-item-cn {
+    position: absolute;
+    top: 0;
+    right: 0vw;
+    display: block;
+    margin: 0.5vw;
+    font-size: 2vh;
+    font-weight: bold;
+}
+
+.card-list-item-cm {
+    
+}

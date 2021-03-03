@@ -7,6 +7,14 @@ const FIELDS = ['sport', 'pname', 'tname', 'cman', 'year', 'cnum', 'notes'];
 
 export class NewCardForm extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            image: null
+        }
+    }
+
     ge(id) {
         return document.getElementById(id);
     }
@@ -48,11 +56,26 @@ export class NewCardForm extends Component {
         });
     }
 
+    onImageChange(event) {
+        if (event.target.files) {
+            if (event.target.files[0]) {
+                let img = event.target.files[0];
+                this.setState({
+                image: URL.createObjectURL(img)
+                });
+            }
+        }
+    };
+
     render() {
         return (
             <div>
 
                 <h1>Add A New Card To Your Collection</h1>
+
+                <label htmlFor="photo">Photo:</label>
+                <input type="file" name="photo" onChange={(e) => this.onImageChange(e)}/>
+                <img src={this.state.image} class="new-card-photo" alt=""/>
 
                 <label htmlFor="sport">Sport</label>
                 <input id="sport" type="text"/>
