@@ -2,93 +2,94 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { useTable } from 'react-table';
+import firebase from 'firebase';
+
 
 function TestTable() {
-    const data = React.useMemo(
-        () => [
-        {
-            col1: 'Hello',
-            col2: 'World',
-        },
-        {
-            col1: 'react-table',
-            col2: 'rocks',
-        },
-        {
-            col1: 'whatever',
-            col2: 'you want',
-        },
-        ],
-        []
-    )
+
+    let db = firebase.firestore();
+
+     let cards = []
+    db.collection("cards").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // console.log(`${doc.id}`);
+            let card = doc.data()
+            cards.push(card)
+            
+        });
+    });
     
     const columns = React.useMemo(
         () => [
         {
-            Header: 'Column 1',
-            accessor: 'col1', // accessor is the "key" in the data
+            Header: 'Year',
+            accessor: 'year', // accessor is the "key" in the data
         },
         {
-            Header: 'Column 2',
-            accessor: 'col2',
+            Header: 'Card Manufacturer',
+            accessor: 'cardManufacturer',
+        },
+        {
+            Header: 'Player Name',
+            accessor: 'playerName',
+        },
+        {
+            Header: 'Notes',
+            accessor: 'notes',
+        },
+        {
+            Header: 'Team Name',
+            accessor: 'teamName',
+        },
+        {
+            Header: 'Card Number',
+            accessor: 'cardNumber',
+        },
+        {
+            Header: 'Sport',
+            accessor: 'sport',
         },
         ],
         []
     )
+    console.log("DATA")
+    console.log(cards)
+    console.log("Columns")
+    console.log(columns)
 
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow,
-      } = useTable({ columns, data })
+    let order = []
 
+    let headerRows = columns.map((column) => {
+        return <th key={`table-head-${column.accessor}`}>
+            {column.Header}
+        </th>
+    })
+
+    let dataRows = cards.map((d, i) => {
+        console.log(d)
+        return <tr key={`row-${i}`}>
+            <td key={`table-data-${i}-year`}>{d.year}</td>
+            <td key={`table-data-${i}-cman`}>{d.cardManufacturer}</td>
+            <td key={`table-data-${i}-pname`}>{d.playerName}</td>
+            <td key={`table-data-${i}-notes`}>{d.notes}</td>
+            <td key={`table-data-${i}-tname`}>{d.teamName}</td>
+            <td key={`table-data-${i}-cnum`}>{d.cardNumber}</td>
+            <td key={`table-data-${i}-sport`}>{d.sport}</td>
+        </tr>
+    })
+    console.log("DATA ROWS")
+    console.log(dataRows)
     return (
         <div>
 
-            <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
+            <table >
                 <thead>
-                    {headerGroups.map(headerGroup => (
-                    <tr {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map(column => (
-                        <th
-                            {...column.getHeaderProps()}
-                            style={{
-                            borderBottom: 'solid 3px red',
-                            background: 'aliceblue',
-                            color: 'black',
-                            fontWeight: 'bold',
-                            }}
-                        >
-                            {column.render('Header')}
-                        </th>
-                        ))}
+                    <tr>
+                        {headerRows}
                     </tr>
-                    ))}
                 </thead>
-                <tbody {...getTableBodyProps()}>
-                    {rows.map(row => {
-                    prepareRow(row)
-                    return (
-                        <tr {...row.getRowProps()}>
-                        {row.cells.map(cell => {
-                            return (
-                            <td
-                                {...cell.getCellProps()}
-                                style={{
-                                padding: '10px',
-                                border: 'solid 1px gray',
-                                background: 'papayawhip',
-                                }}
-                            >
-                                {cell.render('Cell')}
-                            </td>
-                            )
-                        })}
-                        </tr>
-                    )
-                    })}
+                <tbody>
+                    {dataRows}
                 </tbody>
             </table>
             

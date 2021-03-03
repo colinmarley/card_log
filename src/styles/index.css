@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+table {
+  border: 2pt solid black;
+}
+
 .content {
   display: flex;
   justify-content: center;
