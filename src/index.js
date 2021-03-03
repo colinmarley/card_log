@@ -6,12 +6,16 @@ import App from './App';
 import rootReducer from './reducers/rootReducer';
 import {firebaseConfig} from './config/firebaseConfig';
 
+
 /** Styles */
 import './styles/index.css';
+
+require("firebase/firestore");
 
 // import reportWebVitals from './reportWebVitals';
 
 const store = createStore(rootReducer);
+//initialize firebase
 firebaseConfig.initConfig();
 ReactDOM.render(
   <Provider store={store}>
