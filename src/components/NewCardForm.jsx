@@ -11,12 +11,69 @@ export class NewCardForm extends Component {
         super(props);
 
         this.state = {
-            image: null
+            imageRef: null
         }
     }
 
     ge(id) {
         return document.getElementById(id);
+    }
+
+    uploadPic(storageRef, file, name) {
+        // Create the file metadata
+        var metadata = {
+            contentType: 'image/jpeg'
+        };
+        
+        // Upload file and metadata to the object 'images/mountains.jpg'
+        var uploadTask = storageRef.child('collection/baseball/' + name).put(file, metadata);
+        
+        // Listen for state changes, errors, and completion of the upload.
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+            (snapshot) => {
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                    console.log('Upload is paused');
+                    break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                    console.log('Upload is running');
+                    break;
+                default:
+                    break;
+            }
+            }, 
+            (error) => {
+            // A full list of error codes is available at
+            // https://firebase.google.com/docs/storage/web/handle-errors
+            switch (error.code) {
+                case 'storage/unauthorized':
+                    // User doesn't have permission to access the object
+                    break;
+                case 'storage/canceled':
+                    // User canceled the upload
+                    break;
+        
+                // ...
+        
+                case 'storage/unknown':
+                    // Unknown error occurred, inspect error.serverResponse
+                    break;
+                default:
+                    break;
+            }
+            }, 
+            () => {
+            // Upload completed successfully, now we can get the download URL
+            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                this.setState({
+                    imageRef: downloadURL
+                });
+            });
+            }
+        );
     }
 
     onNewCardSubmit() {
@@ -35,7 +92,9 @@ export class NewCardForm extends Component {
         console.log(vals);
 
         var db = firebase.firestore();
+        // var storage = firebase.storage().ref()
 
+        vals["cimg"] = this.state.imageRef
 
 
         db.collection("cards").add({
@@ -45,7 +104,8 @@ export class NewCardForm extends Component {
             cardManufacturer: vals["cman"],
             year: vals["year"],
             cardNumber: vals["cnum"],
-            notes: vals["notes"]
+            notes: vals["notes"],
+            cardImage: vals["cimg"]
         })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
@@ -54,15 +114,19 @@ export class NewCardForm extends Component {
         .catch((error) => {
             console.error("Error adding document: ", error);
         });
+
+        
     }
 
     onImageChange(event) {
+        let storageRef = firebase.storage().ref()
         if (event.target.files) {
             if (event.target.files[0]) {
                 let img = event.target.files[0];
-                this.setState({
-                image: URL.createObjectURL(img)
-                });
+                this.uploadPic(storageRef, img, img.name);
+                // this.setState({
+                // image: URL.createObjectURL(img)
+                // });
             }
         }
     };
@@ -75,7 +139,7 @@ export class NewCardForm extends Component {
 
                 <label htmlFor="photo">Photo:</label>
                 <input type="file" name="photo" onChange={(e) => this.onImageChange(e)}/>
-                <img src={this.state.image} class="new-card-photo" alt=""/>
+                <img src={this.state.imageRef} class="new-card-photo" alt=""/>
 
                 <label htmlFor="sport">Sport</label>
                 <input id="sport" type="text"/>

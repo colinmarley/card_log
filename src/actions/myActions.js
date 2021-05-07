@@ -11,6 +11,7 @@ export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const SET_CARD_LIST = "SET_CARD_LIST";
 export const ADD_TO_CARD_LIST = "ADD_TO_CARD_LIST";
 export const CLEAR_CARD_LIST = "CLEAR_CARD_LIST";
+export const REMOVE_CARD_FROM_LIST = "REMOVE_CARD_FROM_LIST";
 
 
 // Action Creators
@@ -50,5 +51,10 @@ export const addToCardList = (payload) => ({
 
 export const clearCardList = () => ({
     type: CLEAR_CARD_LIST,
-})
+});
+
+export const removeCardFromList = (payload) => ({
+    type: REMOVE_CARD_FROM_LIST,
+    payload
+});
 
