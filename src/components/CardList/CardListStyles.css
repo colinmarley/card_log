@@ -10,14 +10,34 @@
     border: 2px solid black;
     border-radius: 1vw;
     margin: 0.5vh;
+}
 
+.card-list-item-image {
+    height: 80%;
+    width: 10%;
+    position: absolute;
+    margin: auto;
+    top: 2.5vh;
+    display: inline-block;
+    left: 2vw;
+    border: 1px solid darkgray;
+    border-radius: 2px;
+}
+
+.card-list-item-content {
+    height: 100%;
+    width: 85%;
+    position: absolute;
+    overflow: hidden;
+    right: 0;
+    border-radius: 2px;
 }
 
 .card-list-item-name {
     position: relative;
     width: fit-content;
     top: 0;
-    display: block;
+    display: inline-block;
     left: 0px;
     margin: 0.5vw;
     font-size: 2vh;
@@ -54,6 +74,20 @@
     margin: 0.5vw;
     font-size: 2vh;
     font-weight: bold;
+}
+
+.card-list-item-delete-btn {
+    position: absolute;
+    width: auto;
+    height: auto;
+    font-size: 1.5em;
+    right: 5px;
+    bottom: 5px;
+    background-color: orangered;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 2px;
+
 }
 
 .card-list-item-cm {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import NavbarTab from './views/NavbarTab'
-import { setTabActiveFlag } from '../actions/myActions'
+import NavbarTab from './NavbarTab'
+import { setTabActiveFlag } from '../../actions/myActions'
 
 import { Link } from 'react-router-dom';
 

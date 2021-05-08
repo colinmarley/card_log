@@ -1,4 +1,4 @@
-import { SET_CARD_LIST, ADD_TO_CARD_LIST, CLEAR_CARD_LIST } from '../actions/myActions';
+import { SET_CARD_LIST, ADD_TO_CARD_LIST, CLEAR_CARD_LIST, REMOVE_CARD_FROM_LIST } from '../actions/myActions';
 
 
 let initState = {

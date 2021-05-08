@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import List from './components/List';
 import Auth from './components/Auth';
 import Log from './components/Log';

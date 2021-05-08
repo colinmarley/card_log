@@ -14,6 +14,12 @@ class LogDisplay extends Component {
     
 
     componentDidMount() {
+        this.loadCards();
+        // this.props.setCardList(cards);
+
+    }
+
+    loadCards() {
         let db = fb.getDB();
         // const cards = []
         this.props.clearCardList();
@@ -21,12 +27,13 @@ class LogDisplay extends Component {
           .get()
           .then(snapshot => {
             snapshot.forEach(doc => {
-                this.props.addToCardList(doc.data())
+                let data = doc.data()
+                data['id'] = doc.id
+                this.props.addToCardList(data)
+                console.log(doc.id)
             })
           })
           .catch(error => console.log(error))
-        // this.props.setCardList(cards);
-
     }
 
     render() {
@@ -34,10 +41,10 @@ class LogDisplay extends Component {
         console.log(this.props.cards);
         return (
             <div>
-                <button onClick={() => {}}>Click</button>
+                <button className="card-list-refresh-btn" onClick={() => this.loadCards()}>Refresh</button>
                 <ol className='card-list'>
                     {this.props.cards && this.props.cards.map((card, i) => 
-                        <CardListItem card={card} id={i}/>
+                        <CardListItem card={card} id={i} loadCards={() => this.loadCards()}/>
                     )}
                 </ol>
                    
