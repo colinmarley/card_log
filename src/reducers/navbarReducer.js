@@ -17,6 +17,11 @@ let initState = {
             id: 2,
             isActive: false,
             title: "list",
+        },
+        {
+            id: 3,
+            isActive: false,
+            title: "admin"
         }
     ],
     test: "THIS IS JUST A TEST",

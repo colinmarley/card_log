@@ -5,6 +5,8 @@ import { setTabActiveFlag } from '../../actions/myActions'
 
 import { Link } from 'react-router-dom';
 
+import "./Navbar.css"
+
 
 const mapStateToProps = (state, ownProps) => {
     return({

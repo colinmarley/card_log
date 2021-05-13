@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {firebaseConfig as fb} from '../config/firebaseConfig'
+import {firebaseConfig as fb} from '../../config/firebaseConfig'
 
-import { setAuthStatusFlag, setCurrentUser } from '../actions/myActions';
+import { setAuthStatusFlag, setCurrentUser } from '../../actions/myActions';
 
 export class Auth extends Component {
 
     signInWithGooglePopUp() {
-
 
         fb.signInWithGooglePopUp((result) => this.onSignInPopupSuccess(result), (error) => this.onSignInPopupError(error));
     }
@@ -38,11 +37,6 @@ export class Auth extends Component {
         console.log(currentUser);
         this.props.setCurrentUser(currentUser);
         
-
-
-
-
-        // ...
     }
 
     onSignInPopupError(error) {
