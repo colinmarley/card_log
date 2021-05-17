@@ -1,11 +1,11 @@
 import Navbar from './components/Navbar/Navbar';
 import List from './components/List';
-import Auth from './components/Auth';
+import Auth from './components/Auth/Auth';
 import Log from './components/Log';
 import { connect } from 'react-redux';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './styles/App.css';
-import './styles/Navbar.css';
+import Admin from './components/Admin/Admin';
 
 const mapStateToProps = (state, ownProps) => {
   return ({
@@ -18,7 +18,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 function App() {
-  console.log("RENDERING")
   return (
     <Router>
       <div className="App">
@@ -34,8 +33,11 @@ function App() {
             <Route path="/log">
               <Log/>
             </Route>
+            <Route path="/admin">
+              <Admin/>
+            </Route>
             <Route path='/'>
-
+              <Auth/>
             </Route>
           </Switch>
         </div>

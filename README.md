@@ -1,6 +1,18 @@
-# Getting Started with Create React App
+# Card Log Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application to keep track of a card collection. 
+
+## Project Planning and Progress Tracking
+
+### Trello
+
+I have used Trello to keep track of proposed changes/additions to the project from idea through development and testing and into implementation on production level. It's an easy to see board of all features that may be/have been added to the project and the status of each one. The board can be found [here](https://trello.com/b/T8JI0vw4/card-log-web-app).
+
+NOTE: If you need to gain access to Trello board please email `colinmarley94@gmail.com` either from the email you would like to use to gain access or, if you would like to use a different email from the one you sent the request, please include the email address in the body of the email request.
+
+### GitHub
+
+Github is being used for the management and tracking of all project files and source code. The GitHub repo can be found [HERE](https://github.com/colinmarley/card_log).
 
 ## Available Scripts
 
@@ -38,12 +50,6 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Code Splitting
 
