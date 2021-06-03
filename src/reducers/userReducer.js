@@ -1,31 +1,25 @@
-import { SET_CURRENT_USER } from '../actions/myActions';
+import { SET_CURRENT_USER, UNSET_CURRENT_USER } from '../actions/myActions';
 
 
 
 let initState = {
-    currentUser: {
-        username: "",
-        email: "",
-        lastLoggedIn: "",
-        memberSince: "",
-        token: ""
-    }
+    currentUser: null,
 }
 
 const userReducer  = (state = initState, action) => {
     switch (action.type) {
 
         case SET_CURRENT_USER:
+            console.log("Set current user called")
+            console.log(action.payload)
             return {
                 ...state, 
-                currentUser: {
-                    ...state.currentUser,
-                    username: action.payload.username,
-                    email: action.payload.email,
-                    lastLoggedIn: action.payload.lastLoggedIn,
-                    memberSince: action.payload.memberSince,
-                    token: action.payload.token
-                }
+                currentUser: action.payload,
+            }
+        case UNSET_CURRENT_USER:
+            return {
+                ...state,
+                currentUser: null
             }
 
         default:

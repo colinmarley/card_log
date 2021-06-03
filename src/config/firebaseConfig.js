@@ -1,8 +1,13 @@
 import firebase from 'firebase';
 
-export let firebaseConfig = {
+export const firebaseConfig = {
 
-    initConfig: () => {
+    auth: null,
+    googleAuth: null,
+    emailAuth: null,
+    db: null,
+
+    initConfig: function() {
         // Your web app's Firebase configuration
 
         var firebaseConfig = {
@@ -21,9 +26,14 @@ export let firebaseConfig = {
         console.log("Firebase init Complete");
     },
 
-    getDB: () => {
-        var db = firebase.firestore();
+    initDB: () => {
+        let db = firebase.firestore();
         return db;
+    },
+
+    initAuth: () => {
+        let auth = firebase.auth();
+        return auth;
     },
 
     signInWithGooglePopUp: (onSuccess, onError) => {

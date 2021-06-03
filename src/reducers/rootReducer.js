@@ -4,6 +4,7 @@ import navbarReducer from './navbarReducer';
 import authReducer from './authReducer';
 import userReducer from './userReducer';
 import cardListReducer from './cardListReducer';
+import dbReducer from './dbReducer';
 
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     auth: authReducer,
     user: userReducer,
     cardList: cardListReducer,
+    db: dbReducer,
 });
 
 export default rootReducer;
