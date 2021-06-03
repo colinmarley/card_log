@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {firebaseConfig as fb} from '../config/firebaseConfig'
+import {firebaseConfig as fb} from '../../config/firebaseConfig'
 
-import { setAuthStatusFlag, setCurrentUser } from '../actions/myActions';
+import { setAuthStatusFlag, setCurrentUser } from '../../actions/myActions';
 
 export class Auth extends Component {
 
@@ -81,4 +81,7 @@ const mapDispatchToProps = (dispatch) => ({
     setCurrentUser: user => dispatch(setCurrentUser(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Auth)

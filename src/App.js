@@ -1,11 +1,13 @@
 import Navbar from './components/Navbar/Navbar';
-import List from './components/List';
-import Auth from './components/Auth';
+import MyCards from './components/CardList/MyCards';
+import Auth from './components/Auth/Auth';
 import Log from './components/Log';
+import Admin from './components/Admin/Admin';
 import { connect } from 'react-redux';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './styles/App.css';
 import './styles/Navbar.css';
+import CardTable from './components/CardTable/CardTable';
 
 const mapStateToProps = (state, ownProps) => {
   return ({
@@ -28,11 +30,14 @@ function App() {
             <Route path='/auth'>
               <Auth/>
             </Route>
-            <Route path='/list'>
-              <List/>
+            <Route path='/mycards'>
+              <CardTable/>
             </Route>
             <Route path="/log">
               <Log/>
+            </Route>
+            <Route path="/admin">
+              <Admin/>
             </Route>
             <Route path='/'>
 

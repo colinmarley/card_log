@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import NavbarTab from './NavbarTab'
 import { setTabActiveFlag } from '../../actions/myActions'
 
-import { Link } from 'react-router-dom';
 
 
 const mapStateToProps = (state, ownProps) => {

@@ -1,13 +1,24 @@
+.my-cards-root {
+    width: 100%;
+    height: auto;
+}
+
+.card-list-container {
+
+}
+
 .card-list {
     width: 80vw;
     position: relative;
 }
 
 .card-list-item {
-    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    height: 3em;
     width: inherit;
     position: inherit;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 1vw;
     margin: 0.5vh;
 }
@@ -18,7 +29,7 @@
     position: absolute;
     margin: auto;
     top: 2.5vh;
-    display: inline-block;
+    
     left: 2vw;
     border: 1px solid darkgray;
     border-radius: 2px;
@@ -27,29 +38,35 @@
 .card-list-item-content {
     height: 100%;
     width: 85%;
-    position: absolute;
     overflow: hidden;
     right: 0;
     border-radius: 2px;
 }
 
-.card-list-item-name {
+.card-list-item-year {
+    height: 100%;
+    width: 1fr;
+    display: inline-block;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-list-item-player-name {
     position: relative;
-    width: fit-content;
+    width: 1fr;
     top: 0;
     display: inline-block;
     left: 0px;
     margin: 0.5vw;
-    font-size: 2vh;
+    font-size: 110pt;
 
 }
 
 .card-list-item-team {
     position: relative;
-    width: fit-content;
+    width: 1fr;
     top: 0;
-    display: block;
-    left: 0px;
+    display: inline-block;
     margin: 0.5vw;
     font-size: 3vh;
     font-style: italic;
@@ -57,9 +74,9 @@
 
 .card-list-item-details {
     position: relative;
-    width: fit-content;
+    width: 2fr;
     top: 0;
-    display: block;
+    display: inline-block;
     left: 0px;
     margin: 0.5vw;
     font-size: 5vh;
