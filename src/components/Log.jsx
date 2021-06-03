@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import NewCardForm from './NewCardForm';
 
-export class log extends Component {
+export class Log extends Component {
     render() {
         return (
             <div>
@@ -22,4 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
     
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(log);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Log);

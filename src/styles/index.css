@@ -15,6 +15,7 @@ code {
 .content {
   display: flex;
   justify-content: center;
+  background-color: lightgray;
 }
 
 .new-card-photo {

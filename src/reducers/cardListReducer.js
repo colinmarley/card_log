@@ -2,6 +2,7 @@ import { SET_CARD_LIST, ADD_TO_CARD_LIST, CLEAR_CARD_LIST, REMOVE_CARD_FROM_LIST
 
 
 let initState = {
+    
     cards: [],
 
 }
@@ -14,13 +15,8 @@ const authReducer  = (state = initState, action) => {
             return {...state, cards: [...state.cards, action.payload]}
         case CLEAR_CARD_LIST:
             return {...state, cards: []}
-        // case SET_AUTH_STATUS_FLAG:
-        //     console.log(`New Auth Status: ${action.payload}`);
-        //     return {
-        //         ...state,
-        //         status: action.payload
-        //     }
-
+        case REMOVE_CARD_FROM_LIST:
+            return state
         default:
             return state
     }
